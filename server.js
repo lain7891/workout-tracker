@@ -13,7 +13,17 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("public"));
+app.use(express.static("/public"));
+
+
+// app.get('/', function(req, res){
+//     res.render('index.html');
+// });
+
+// app.get('/', function(req, res){
+//   console.log("Root Route")
+//   res.json({ message: "hello world" });
+// });
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workouts", { 
 useNewUrlParser: true,
