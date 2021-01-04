@@ -10,20 +10,9 @@ const router = express.Router();
 
 // VIEW ROUTES
 
-router.get("/index", (req,res)=> {
-    res.sendFile(path.join(__dirname, "./public/index.html"))
-});
-
-router.get("/stats", (req,res)=> {
-    res.sendFile(path.join(__dirname, "./public/stats.html"))
-});
-
-router.get("/exercise", (req,res)=> {
-    res.sendFile(path.join(__dirname, "./public/exercise.html"))
-});
-
+ 
 router.get("/api/workouts", (req, res)=>{
-    db.Workout.find().then((foundWorkout) => {
+    db.workouts.find().then((foundWorkout) => {
         res.json(foundWorkout);
         console.log(foundWorkout);
     })})

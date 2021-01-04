@@ -31,9 +31,11 @@ useUnifiedTopology: true,
 useFindAndModify: false,
 useCreateIndex: true});
 
-const routes = require("./controller/workoutRoutes.js");
+const backEndRoutes = require("./controller/workoutRoutes.js");
+const frontEndRoutes = require("./controller/viewRoutes.js");
 
-app.use(routes);
+app.use(backEndRoutes);
+app.use(frontEndRoutes);
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
