@@ -1,6 +1,15 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+const connection = mongoose.connection;
+
+connection.on("connected", () => {
+	console.log("Mongoose connected successfully!");
+});
+
+connection.on("error", (err) => {
+	console.log("Mongoose connection error: " + err);
+});
 
 const PORT = process.env.PORT || 3002;
 

@@ -3,13 +3,6 @@ const db = require("../models");
 const path = require("path");
 
 const router = express.Router();
-
-// router.get('/', function(req, res){
-//     res.render('index.html');
-// });
-
-// VIEW ROUTES
-
  
 router.get("/api/workouts", (req, res)=>{
     db.workouts.find().then((foundWorkout) => {
@@ -17,6 +10,20 @@ router.get("/api/workouts", (req, res)=>{
         console.log(foundWorkout);
     })})
 
+
+//delete method: last workout () 
+
+//get - workoutinrange()
+
+// update - addExercise ()
+
+// create: - createExercise()
+
+router.post("api/workouts", (req, res) => {
+    db.workouts.create().then((newWorkout) => {
+        res.json(newWorkout);
+});
+});
 
 
 
