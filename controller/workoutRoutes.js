@@ -1,8 +1,8 @@
 const express = require("express");
-const db = require("../models");
+const db = require("../models/workouts.js");
 const path = require("path");
 
-const router = express.Router();
+const router = require("express").Router();
  
 router.get("/api/workouts", (req, res)=>{
     db.workouts.find().then((foundWorkout) => {
