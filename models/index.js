@@ -1,4 +1,4 @@
 
 module.exports = {
-    workouts: require("./workouts"),
+    Workout: require("./workout"),
   };

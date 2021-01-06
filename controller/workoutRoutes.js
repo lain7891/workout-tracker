@@ -1,14 +1,18 @@
-const express = require("express");
-const db = require("../models/workouts.js");
+const express = require("express")
+const db = require("../models");
 const path = require("path");
+const app = express();
 
 const router = require("express").Router();
  
-router.get("/api/workouts", (req, res)=>{
-    db.workouts.find({}).then(foundWorkout => {
+app.get("/api/workouts", (req, res)=>{
+    db.Workout.find().then(foundWorkout => {
         res.json(foundWorkout);
         console.log(foundWorkout);
     })})
+
+
+
 
 
 //delete method: last workout () 
@@ -19,7 +23,7 @@ router.get("/api/workouts", (req, res)=>{
 
 // create: - createExercise()
 
-router.post("api/workouts", (req, res) => {
+app.post("api/workouts", (req, res) => {
     Workout.create({}).then((newWorkout) => {
         res.json(newWorkout);
 });
