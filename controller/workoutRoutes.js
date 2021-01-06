@@ -1,11 +1,11 @@
 const express = require("express")
 const db = require("../models");
 const path = require("path");
-const app = express();
+// const app = express();
 
 const router = require("express").Router();
  
-app.get("/api/workouts", (req, res)=>{
+router.get("/api/workouts", (req, res)=>{
     db.Workout.find().then(foundWorkout => {
         res.json(foundWorkout);
         console.log(foundWorkout);
@@ -23,9 +23,12 @@ app.get("/api/workouts", (req, res)=>{
 
 // create: - createExercise()
 
-app.post("api/workouts", (req, res) => {
-    Workout.create({}).then((newWorkout) => {
+router.post("api/workouts", ({ body }, res) => {
+    console.log(newWorkout)
+    db.Workout.create({body}).then((newWorkout) => {
         res.json(newWorkout);
+}).catch(err =>{
+res.json(err)
 });
 });
 
