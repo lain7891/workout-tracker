@@ -9,9 +9,13 @@ router.get("/api/workouts", (req, res)=>{
     db.Workout.find().then(foundWorkout => {
         res.json(foundWorkout);
         console.log(foundWorkout);
-    })})
+    })});
 
-
+    router.put("/api/workouts/:id", (req, res)=>{
+        db.Workout.findByIdAndUpdate(req.params.id, req.body).then(updateWorkout => {
+            res.json(updateWorkout);
+            console.log(updateWorkout);
+        })})
 
 
 
