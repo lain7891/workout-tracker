@@ -23,10 +23,10 @@ router.get("/api/workouts", (req, res)=>{
 
 // create: - createExercise()
 
-router.post("api/workouts", ({ body }, res) => {
-    console.log(newWorkout)
+router.post("/api/workouts", ({ body }, res) => {
     db.Workout.create({body}).then((newWorkout) => {
         res.json(newWorkout);
+        console.log(newWorkout)
 }).catch(err =>{
 res.json(err)
 });
