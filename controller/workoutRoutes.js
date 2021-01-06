@@ -5,7 +5,7 @@ const path = require("path");
 const router = require("express").Router();
  
 router.get("/api/workouts", (req, res)=>{
-    db.workouts.find().then((foundWorkout) => {
+    db.Workouts.find({ body }).then(foundWorkout => {
         res.json(foundWorkout);
         console.log(foundWorkout);
     })})
@@ -19,8 +19,8 @@ router.get("/api/workouts", (req, res)=>{
 
 // create: - createExercise()
 
-router.post("api/workouts", (req, res) => {
-    db.workouts.create().then((newWorkout) => {
+router.post("api/workouts", ({ body }, res) => {
+    db.create(body).then((newWorkout) => {
         res.json(newWorkout);
 });
 });
