@@ -5,6 +5,8 @@ const path = require("path");
 
 const router = require("express").Router();
 
+// Route gets last workout
+
 router.get("/api/workouts", (req, res) => {
   db.Workout.find().then((foundWorkout) => {
     res.json(foundWorkout);
@@ -12,22 +14,27 @@ router.get("/api/workouts", (req, res) => {
   });
 });
 
+// Add's exercise
+
+// router.put("/api/workouts/:id", (req, res) => {
+//   db.Workout.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(
+//     (updateWorkout) => {
+//       res.json(updateWorkout);
+//       console.log(updateWorkout);
+//     }
+//   );
+// });
+
 router.put("/api/workouts/:id", (req, res) => {
-  db.Workout.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(
-    (updateWorkout) => {
-      res.json(updateWorkout);
-      console.log(updateWorkout);
-    }
-  );
-});
+      db.Workout.findByIdAndUpdate(req.params.id,{ $push: { exercises: req.body }}).then(
+        (updateWorkout) => {
+          res.json(updateWorkout);
+          console.log(updateWorkout);
+        }
+      );
+    });
 
-//delete method: last workout ()
-
-//get - workoutinrange()
-
-// update - addExercise ()
-
-// create: - createExercise()
+// Creates exercise
 
 router.post("/api/workouts", ({ body }, res) => {
   db.Workout.create({ body })
@@ -39,6 +46,8 @@ router.post("/api/workouts", ({ body }, res) => {
       res.json(err);
     });
 });
+
+// Get workout in the 7 days range
 
 router.get("/api/workouts/range", (req, res) => {
     db.Workout.find().limit(7).then((data) => {
