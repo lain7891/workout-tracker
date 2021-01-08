@@ -33,12 +33,15 @@ app.use(express.static("./public"));
 //   console.log("Root Route")
 //   res.json({ message: "hello world" });
 // });
-
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workouts", { 
-useNewUrlParser: true,
-useUnifiedTopology: true,
-useFindAndModify: false,
-useCreateIndex: true});
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost/workouts',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
 
 const backEndRoutes = require("./controller/workoutRoutes.js");
 const frontEndRoutes = require("./controller/viewRoutes.js");
